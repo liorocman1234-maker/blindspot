@@ -535,13 +535,27 @@
     howto: 'נפתח היומן: בוחרים שעה, ממלאים שם, מייל וטלפון (הטלפון רק אם צריך לתאם מחדש).'
   };
 
+  /* page lines shared with the day-0 email (one wording, page = email). */
+  const PAGE_LINES = {
+    label: 'הדפוס שלך בדייטים',
+    patternLine: tag => `זה לא עניין של מזל. יש רגע אחד שחוזר, שוב ושוב, ו"${tag}" מתארת איך הוא נראה אצלך.`,
+    recogTitle: 'זה נשמע כמו את אם...',
+    notYou: others => `לא בדיוק את? ${others} בשיחה רואים איך זה נראה אצלך.`,
+    mixTitle: 'התמהיל שלך, לפי התשובות בשאלון',
+    tipsTitle: tag => `3 טיפים שלי ל${tag.replace(/^ה/, '')}`,
+    weekTitle: 'ומה לעשות השבוע',
+    bridgeTitle: 'עכשיו את יודעת מה הדפוס. נשאר למצוא איפה בדיוק הוא תופס אותך.',
+    bridgeText: 'השאלון רואה את התמונה הכללית. הוא לא רואה את הדייט, את המשפט ואת הרגע שבו זה נעצר אצלך. את זה מוצאים יחד, בשיחה אחת על הסיפור שלך.',
+    howto: CALL_COPY.howto + ' אפשר גם בלי מצלמה.'
+  };
+
   const RESULT_COPY = {
     R: { tag:'הרומנטיקנית',
       others:'אצל אחרות זה אקס שעוד לא יצא מהראש, או התחלה מחדש אחרי הפסקה ארוכה.',
       mirror:'את מחכה לרגע שבו פשוט תדעי. וכשהוא לא מגיע מהר, קשה לך לתת לזה סיכוי.',
       moments:['יצאת עם מישהו נחמד, טוב אלייך, ובדרך הביתה אמרת לחברה "אין ניצוץ".','היה ערב מעולה, צחקתם שעות, ואז הוא נעלם, ואת מנסה להבין מה עשית לא נכון.','הכל טוב חודש-חודשיים, ואז, בדיוק כשזה אמור להתייצב, משהו בך מתחיל לחפש את הסדק.','את כבר כמה חודשים בתוך משהו, טוב לך, ואת מפחדת לשאול "מה אנחנו" כדי לא לקלקל.'],
       why:'ממה שאני רואה אצל מתאמנות, הניצוץ שאת מחפשת הוא הרבה פעמים התרגשות מאי-ודאות, ולא סימן להתאמה.',
-      tips:['תתמקדי פחות ב"אריזה": הוא אולי ייראה אחרת ממה שדמיינת.','תפסיקי לחפש את פגישת הקולנוע. מה שחשוב זה שנפגשתם, לא איך.','כשהכל רגוע ופתאום משעמם לך, זה לא סימן שנגמר. הרבה פעמים זה סימן שנהיה בטוח.'],
+      tips:['תתמקדי פחות ב"אריזה": הוא אולי ייראה אחרת ממה שדמיינת.','תפסיקי לחפש היכרות של סרט. מה שחשוב זה שנפגשתם, לא איך.','כשהכל רגוע ופתאום משעמם לך, זה לא סימן שנגמר. הרבה פעמים זה סימן שנהיה בטוח.'],
       noBlame:'זה לא אומר שמשהו לא בסדר איתך. זה אומר שהמדד שבו את בודקת דייט ראשון עובד נגדך.',
       week:'בפעם הבאה שאת יוצאת עם מישהו בסדר בלי ניצוץ, תני לו עוד דייט אחד. ובסופו תשאלי את עצמך: "איך הרגשתי לידו?" ולא "התרגשתי?".',
       weekMore:'ואם את כבר חודשים בתוך קשר, עם הגדרה או בלי: השבוע תשאלי שאלה אחת קטנה על מה שאת רוצה, ותשימי לב מה קורה בך רגע לפני.' },
@@ -568,17 +582,24 @@
   /* her mix of the three patterns, from state.scores.
      Same normalisation as determineProfile (normScores: raw / max per type), then scaled to 100%.
      determineProfile picks the highest normalised type, so her bar is always the top one. */
-  function scoreBars() {
-    const NAMES = { R:'הרומנטיקנית', M:'הממקסמת', H:'המהססת' };
-    const raw = normScores(state.scores || {});
+  const MIX_NAMES = { R:'הרומנטיקנית', M:'הממקסמת', H:'המהססת' };
+  /* [[type, pct], ...] her type first, sums to 100. Used by the page bars AND the day-0 email bars. */
+  function scorePct(scores, profile) {
+    const raw = normScores(scores || {});
     const sum = raw.R + raw.M + raw.H;
     const pct = {}; ['R','M','H'].forEach(k => { pct[k] = sum ? Math.round(raw[k]*100/sum) : 33; });
-    const me = state.profile || determineProfile(state.scores || {});
+    const me = profile || determineProfile(scores || {});
     const diff = 100 - (pct.R + pct.M + pct.H);
     if (diff >= 0) pct[me] += diff;                       /* rounding remainder goes to her type */
     else { const lo = ['R','M','H'].filter(k => k !== me).sort((a,b) => pct[a]-pct[b])[0]; pct[lo] += diff; }
     const order = [me].concat(['R','M','H'].filter(k => k !== me).sort((a,b) => pct[b]-pct[a]));
-    return order.map(k => {
+    return order.map(k => [k, pct[k]]);
+  }
+  function scoreBars() {
+    const NAMES = MIX_NAMES;
+    const me = state.profile || determineProfile(state.scores || {});
+    const rows = scorePct(state.scores || {}, me); const pct = {}; rows.forEach(([k, v]) => { pct[k] = v; });
+    return rows.map(([k]) => {
       const mine = k === me;
       return `<div class="mb-3">
         <div class="flex justify-between text-base mb-1" style="${mine ? 'color:#171F35;font-weight:800' : 'color:rgba(23,31,53,0.74)'}"><span>${NAMES[k]}</span><span>${pct[k]}%</span></div>
@@ -646,44 +667,44 @@
       <img src="${LOGO_SRC}" alt="ליאור רוכמן אימון מנטלי" class="mx-auto mb-6 select-none" style="height:30px;width:auto" draggable="false" />
 
       <!-- 1. the result, short -->
-      <p class="text-base font-bold mb-2 text-center" style="color:${GOLD_TXT};letter-spacing:.02em">${firstName ? escHtml(firstName) + ', הדפוס שלך בדייטים' : 'הדפוס שלך בדייטים'}</p>
+      <p class="text-base font-bold mb-2 text-center" style="color:${GOLD_TXT};letter-spacing:.02em">${firstName ? escHtml(firstName) + ', ' + PAGE_LINES.label : PAGE_LINES.label}</p>
       <h1 class="text-4xl font-black leading-tight mb-3 text-center" style="${INK}">${r.tag}</h1>
       <p class="text-base leading-relaxed mb-2 text-center text-body">${r.mirror}</p>
       <p class="text-base mb-8 text-center"><a href="#call" onclick="var c=document.getElementById('call');if(c){c.scrollIntoView({behavior:'smooth'});}return false;" style="display:inline-block;padding:10px 18px;border:1px solid rgba(168,132,47,0.4);border-radius:999px;background:#fff;color:${GOLD_TXT};font-weight:700;text-decoration:none">ובסוף, אם תרצי: ${CALL_COPY.name} איתי, בחינם ↓</a></p>
 
       <!-- 2. the core message (situations are named once, in the bullets + "לא בדיוק את?") -->
       <h2 class="text-xl sm:text-2xl font-black leading-snug mb-3" style="${INK}">${VARIANT.headline}</h2>
-      <p class="text-base leading-relaxed text-body mb-8">זה לא עניין של מזל. יש רגע אחד שחוזר, שוב ושוב, ו"${r.tag}" מתארת איך הוא נראה אצלך.</p>
+      <p class="text-base leading-relaxed text-body mb-8">${PAGE_LINES.patternLine(r.tag)}</p>
 
       <!-- 3. recognition + why + no-blame -->
-      <h2 class="${H2}" style="${INK}">זה נשמע כמו את אם...</h2>
+      <h2 class="${H2}" style="${INK}">${PAGE_LINES.recogTitle}</h2>
       <ul class="text-base leading-relaxed text-body mb-4" style="list-style:none;padding:0">
         ${r.moments.map(m => `<li class="mb-3" style="padding-right:18px;position:relative"><span style="position:absolute;right:0;color:#A8842F">•</span>${m}</li>`).join('')}
       </ul>
-      <p class="text-base leading-relaxed text-body mb-6">לא בדיוק את? ${r.others} בשיחה רואים איך זה נראה אצלך.</p>
+      <p class="text-base leading-relaxed text-body mb-6">${PAGE_LINES.notYou(r.others)}</p>
       <p class="text-base leading-relaxed text-body mb-3">${r.why}</p>
       <p class="text-base leading-relaxed font-bold mb-8" style="${INK}">${r.noBlame}</p>
 
       <!-- 4. value first: her mix, 3 tips + this week (one card) -->
       <div class="p-5 mb-4" style="${CARD}">
-        <h2 class="text-xl font-black mb-4" style="${INK}">התמהיל שלך, לפי התשובות בשאלון</h2>
+        <h2 class="text-xl font-black mb-4" style="${INK}">${PAGE_LINES.mixTitle}</h2>
         ${scoreBars()}
       </div>
       <div class="p-5 mb-8" style="${CARD}">
-        <h2 class="text-xl font-black mb-3" style="${INK}">3 טיפים שלי ל${r.tag.replace(/^ה/, '')}</h2>
+        <h2 class="text-xl font-black mb-3" style="${INK}">${PAGE_LINES.tipsTitle(r.tag)}</h2>
         <ol class="text-base leading-relaxed text-body mb-4" style="padding-right:20px;list-style:decimal">
           ${r.tips.map(t => `<li class="mb-2">${t}</li>`).join('')}
         </ol>
         <div style="border-top:1px solid rgba(166,124,0,0.18);padding-top:14px">
-          <p class="text-base font-bold mb-1" style="color:${GOLD_TXT}">ומה לעשות השבוע</p>
+          <p class="text-base font-bold mb-1" style="color:${GOLD_TXT}">${PAGE_LINES.weekTitle}</p>
           <p class="text-base leading-relaxed text-body mb-2">${r.week}</p>
           <p class="text-base leading-relaxed text-body">${r.weekMore}</p>
         </div>
       </div>
 
       <!-- 5. bridge (continues from the tips) + who am I + offer -->
-      <h2 class="text-xl sm:text-2xl font-black leading-snug mb-3" style="${INK}">עכשיו את יודעת מה הדפוס. נשאר למצוא איפה בדיוק הוא תופס אותך.</h2>
-      <p class="text-base leading-relaxed text-body mb-5">השאלון רואה את התמונה הכללית. הוא לא רואה את הדייט, את המשפט ואת הרגע שבו זה נעצר אצלך. את זה מוצאים יחד, בשיחה אחת על הסיפור שלך.</p>
+      <h2 class="text-xl sm:text-2xl font-black leading-snug mb-3" style="${INK}">${PAGE_LINES.bridgeTitle}</h2>
+      <p class="text-base leading-relaxed text-body mb-5">${PAGE_LINES.bridgeText}</p>
       <div class="flex items-start gap-3 mb-5">
         <img src="${LIOR_PHOTO}" alt="ליאור רוכמן" width="64" height="64" loading="lazy" style="width:64px;height:64px;min-width:64px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:2px solid rgba(166,124,0,0.35)">
         <p class="text-base leading-relaxed text-body">אני ליאור רוכמן, מאמן מנטלי ומלמד אימון מנטלי. ליוויתי מאות מתאמנים, ועם אשתי להב אני מגיש את הפודקאסט <a href="https://pod.link/6804400587" target="_blank" rel="noopener" style="${LINK}">מדליקים את האור</a>.</p>
@@ -697,7 +718,7 @@
         <p class="text-base leading-relaxed text-body">בלי לחץ: ${CALL_COPY.paid}</p>
         <div class="mt-5">${bookButton('top')}</div>
       </div>
-      <p class="mt-3 text-center text-base text-body leading-relaxed">${CALL_COPY.howto} אפשר גם בלי מצלמה.</p>
+      <p class="mt-3 text-center text-base text-body leading-relaxed">${PAGE_LINES.howto}</p>
       <p class="mt-2 mb-8 text-center text-base text-body">מעדיפה לכתוב קודם? <a href="${WA_URL}" target="_blank" rel="noopener" style="${LINK}">וואטסאפ</a></p>
 
       <!-- 6. proof: 2 real WhatsApp messages + Hadar's written testimonial -->
@@ -736,29 +757,52 @@
   const ZAPIER_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyWG67TkPjigMMqTN3MvuhK3nS4Lb9l3ZXZVPeC-VjH5_Ye37BFu-IsrxYakp2lMR0/exec';
   const ZAPIER_FOLLOWUP_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26838647/4235nfs/';
 
-  /* Day-0 result email, version J (round 3, FINAL).
-     Built from the page's RESULT_COPY + CALL_COPY, so the tips, the weekly task, the call name,
-     the call steps and the button label are the SAME as the page.
-     Order: result summary -> call block -> tips + this week -> series line (only with consent) -> footer.
+  /* Day-0 result email, version J (round 4, 25.11 night: "copy of the page").
+     A faithful copy of the result page's value, in the page's order and wording:
+     result -> headline -> recognition -> why + no-blame -> her mix (same % as the page bars)
+     -> 3 tips + this week -> ONLY THEN the bridge + call block + button -> one testimonial (Hadar)
+     -> series line -> signature -> footer.
+     Every line comes from the page's objects (RESULT_COPY, PAGE_LINES, CALL_COPY, VARIANT,
+     TESTIMONIALS, scorePct), so page and email never drift. The paid-process line is page-only.
      Sent by Apps Script (GmailApp), NOT by MailerLite, so it carries its own sender + opt-out footer
-     (Communications Law section 30A(e)). SENDER_ADDRESS: Lior fills in a mailing address; empty = line omitted. */
+     (Communications Law section 30A(e)). SENDER_ADDRESS: empty = line omitted. */
   const SENDER_ADDRESS = 'דוד מרכוס 16, תל אביב';
   function buildEmailHtml(profile, userName, scores, consent) {
-    const firstName = (userName || '').trim().split(' ')[0] || '';
-    const r = RESULT_COPY[profile] || RESULT_COPY.R;
-    const typeName = r.tag.replace(/^ה/, '');
-    const C = CALL_COPY;
+    const firstName = (userName || '').trim().split(/\s+/)[0] || '';
+    const prof = RESULT_COPY[profile] ? profile : 'R';
+    const r = RESULT_COPY[prof];
+    const C = CALL_COPY, L = PAGE_LINES;
+    const hadar = TESTIMONIALS.find(t => t.name === 'הדר') || TESTIMONIALS[TESTIMONIALS.length - 1];
 
     const FONT = "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif";
-    const P = `margin:1em 0;${FONT};color:#171F35;font-size:16px;line-height:1.5;direction:rtl;text-align:right`;
-    const H = `margin:1.4em 0 0.4em;${FONT};color:#1B2A4A;font-size:17px;font-weight:700;line-height:1.4;direction:rtl;text-align:right`;
-    const SMALL = `margin:0 0 1em;${FONT};color:#5a5a5e;font-size:15px;line-height:1.5;direction:rtl;text-align:center`;
+    const NAVY = '#171F35', BODY = '#3a4157', GOLD = '#7d5c00';
+    const BASE = `${FONT};font-size:16px;line-height:1.55;direction:rtl`;
+    const P = `margin:0 0 1em;${BASE};color:${BODY};text-align:right`;
+    const PB = `margin:0 0 1em;${BASE};color:${NAVY};font-weight:700;text-align:right`;
+    const H = `margin:1.8em 0 0.6em;${FONT};color:${NAVY};font-size:20px;font-weight:800;line-height:1.35;direction:rtl;text-align:right`;
+    const H3 = `margin:1.2em 0 0.3em;${FONT};color:${GOLD};font-size:16px;font-weight:700;line-height:1.4;direction:rtl;text-align:right`;
+    const CENTER = `margin:0 0 1em;${BASE};color:${BODY};text-align:center`;
+    const LIST = `margin:0 0 1em;margin-right:22px;padding:0;${BASE};color:${BODY};text-align:right;list-style-position:outside !important`;
+    const LI = 'padding:0 4px 0 0;margin:0 0 0.5em';
+    const CARD = 'border:1px solid #E8DDBF;border-radius:16px;background:#FFFFFF';
     const FOOT = `margin:2em 0 0;padding-top:12px;border-top:1px solid #ececec;${FONT};color:#6b6b70;font-size:13px;line-height:1.5;direction:rtl;text-align:center`;
-    const UL = `margin:0.6em 0 1em;margin-right:22px;padding:0;${FONT};color:#171F35;font-size:16px;line-height:1.5;direction:rtl;text-align:right;list-style-position:outside !important`;
-    const LI = "padding:0 4px 0 0;margin:0 0 0.4em";
 
-    const tipsHtml = r.tips.map(tip => `<li style="${LI}"><span>${tip}</span></li>`).join('\n');
-    const steps = `${C.steps[0]} ${C.steps[1]} ${C.steps[2]}`;
+    const li = items => items.map(x => `<li style="${LI}">${x}</li>`).join('\n');
+
+    /* her mix: same numbers + order as the page bars (scorePct), email-safe tables */
+    const bars = scorePct(scores || {}, prof).map(([k, pct]) => {
+      const mine = k === prof;
+      const fill = mine ? '#C9A24A' : '#E3D2A2';
+      const w = Math.max(0, Math.min(100, pct));
+      const fillTd = w > 0 ? `<td width="${w}%" bgcolor="${fill}" style="width:${w}%;background-color:${fill};height:10px;font-size:0;line-height:0">&nbsp;</td>` : '';
+      const restTd = w < 100 ? `<td bgcolor="#ECEEF2" style="background-color:#ECEEF2;height:10px;font-size:0;line-height:0">&nbsp;</td>` : '';
+      return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" dir="rtl" style="border-collapse:collapse;margin:0 0 4px"><tr>
+<td style="${FONT};font-size:16px;line-height:1.4;color:${NAVY};${mine ? 'font-weight:800' : 'font-weight:400'};text-align:right;direction:rtl">${MIX_NAMES[k]}</td>
+<td style="${FONT};font-size:16px;line-height:1.4;color:${NAVY};${mine ? 'font-weight:800' : 'font-weight:400'};text-align:left;direction:ltr">${pct}%</td>
+</tr></table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" dir="rtl" style="border-collapse:separate;border-radius:6px;overflow:hidden;margin:0 0 14px;background-color:#ECEEF2"><tr>${fillTd}${restTd}</tr></table>`;
+    }).join('\n');
+
     const series = consent
       ? `<p style="${P}">ובכל מקרה, גם אם עוד לא החלטת: בימים הקרובים אשלח לך עוד כמה מיילים קצרים, בערך אחד כל יומיים, עם תרגיל קטן בכל אחד, והראשון כבר בעוד יומיים.</p>\n`
       : '';
@@ -774,37 +818,62 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>@media only screen { .email * { word-break: break-word; } }</style>
 </head>
-<body style="margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%">
+<body style="margin:0;padding:0;background-color:#FFFFFF;-webkit-font-smoothing:antialiased;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%">
 <div style="display:none;max-height:0;max-width:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#FFFFFF;opacity:0;">הדפוס הבולט שלך: ${r.tag}&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;</div>
 <div class="email" dir="rtl" style="margin-right:15px;margin-left:15px;direction:rtl;text-align:right">
-<table cellpadding="0" cellspacing="0" style="border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;margin:0 auto"><tbody><tr><td style="vertical-align:top">
+<table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;max-width:560px;margin:0 auto"><tbody><tr><td style="vertical-align:top">
 <div style="text-align:center;margin:8px 0 6px;"><img src="https://liorochman.com/assets/logo-email.png" alt="ליאור רוכמן אימון מנטלי" width="88" height="64" style="display:inline-block;width:88px;height:64px;border:0;"></div>
 
-<p style="${P}">היי${firstName ? ' ' + escHtml(firstName) : ''},<br>​<br>מילאת את שאלון הבליינדספוט. הדפוס הבולט שלך: <strong>${r.tag}</strong>.</p>
+<p style="${P};margin-top:1em">היי${firstName ? ' ' + escHtml(firstName) : ''},</p>
 
-<p style="${P}">${r.mirror}</p>
+<p style="margin:1.4em 0 0.3em;${BASE};color:${GOLD};font-weight:700;text-align:center">${L.label}:</p>
+<p style="margin:0 0 0.4em;${FONT};font-size:32px;line-height:1.2;font-weight:900;color:${NAVY};direction:rtl;text-align:center">${r.tag}</p>
+<p style="${CENTER}">${r.mirror}</p>
 
-<p style="${P}"><strong>${r.noBlame}</strong></p>
+<p style="${H}">${VARIANT.headline}</p>
+<p style="${P}">${L.patternLine(r.tag)}</p>
 
-<p style="${H}">השאלון מראה את הדפוס. שיחה מראה איפה בדיוק הוא קורה אצלך.</p>
+<p style="${H}">${L.recogTitle}</p>
+<ul style="${LIST}">
+${li(r.moments)}
+</ul>
+<p style="${P}">${L.notYou(r.others)}</p>
 
-<p style="${P}">אם בא לך, אפשר לקבוע איתי ${C.name}: 45 דקות, בחינם, בזום, ואפשר גם בלי מצלמה. ${steps}</p>
+<p style="${P}">${r.why}</p>
+<p style="${PB}">${r.noBlame}</p>
 
-<p style="${P}">ובכנות: ${C.paid}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;margin:1.6em 0 0;${CARD}"><tr><td style="padding:18px 18px 6px;direction:rtl;text-align:right">
+<p style="margin:0 0 14px;${FONT};color:${NAVY};font-size:20px;font-weight:800;line-height:1.35;direction:rtl;text-align:right">${L.mixTitle}</p>
+${bars}
+</td></tr></table>
 
-<table cellpadding="0" cellspacing="0" style="margin:20px auto 8px;border-collapse:separate"><tbody><tr><td align="center" bgcolor="#E2C374" style="border-radius:14px;background-color:#E2C374;text-align:center;mso-padding-alt:15px 34px">
+<p style="${H}">${L.tipsTitle(r.tag)}</p>
+<ol style="${LIST}">
+${li(r.tips)}
+</ol>
+<p style="${H3}">${L.weekTitle}</p>
+<p style="${P}">${r.week}</p>
+<p style="${P}">${r.weekMore}</p>
+
+<p style="${H};margin-top:2.2em">${L.bridgeTitle}</p>
+<p style="${P}">${L.bridgeText}</p>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;margin:1.2em 0 0;${CARD}"><tr><td style="padding:20px 18px 8px;direction:rtl;text-align:right">
+<p style="margin:0 0 4px;${FONT};color:${NAVY};font-size:20px;font-weight:800;line-height:1.35;direction:rtl;text-align:right">${C.title}</p>
+<p style="${P}">${C.sub}</p>
+<ol style="${LIST}">
+${li(C.steps)}
+</ol>
+<table cellpadding="0" cellspacing="0" style="margin:16px auto 12px;border-collapse:separate"><tbody><tr><td align="center" bgcolor="#E2C374" style="border-radius:14px;background-color:#E2C374;text-align:center;mso-padding-alt:15px 34px">
 <a href="${BOOK_URL}" style="display:inline-block;padding:15px 34px;color:#1B2A4A;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;font-size:16px;font-weight:700;line-height:1.5;text-decoration:none;border-radius:14px">${C.button}</a>
 </td></tr></tbody></table>
-<p style="${SMALL}">${C.howto}</p>
+</td></tr></table>
+<p style="${CENTER};margin-top:0.8em">${L.howto}</p>
 
-<p style="${H}">3 טיפים שלי ל${typeName}</p>
-<ul style="${UL}">
-${tipsHtml}
-</ul>
-
-<p style="${H}">ומה לעשות השבוע</p>
-<p style="${P};margin-top:0.4em">${r.week}</p>
-<p style="${P}">${r.weekMore}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;margin:1.6em 0 1.4em;${CARD}"><tr><td style="padding:16px 18px;direction:rtl;text-align:right">
+<p style="margin:0 0 8px;${BASE};color:${BODY};text-align:right">${hadar.quote}</p>
+<p style="margin:0;${BASE};color:${NAVY};text-align:right"><strong>${hadar.name}</strong>, ${hadar.meta}</p>
+</td></tr></table>
 
 ${series}<p style="${P}">ליאור</p>
 
