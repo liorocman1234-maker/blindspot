@@ -51,15 +51,15 @@
     body {
       font-family: 'Heebo', sans-serif;
       background: #f7f4ef;
-      color: #1a1612;
+      color: #171F35;
     }
 
     /* ── Grid bg ── */
     .grid-bg {
       background-color: #f7f4ef;
       background-image:
-        linear-gradient(rgba(180,160,130,0.13) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(180,160,130,0.13) 1px, transparent 1px);
+        linear-gradient(rgba(180,160,130,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180,160,130,0.06) 1px, transparent 1px);
       background-size: 52px 52px;
     }
 
@@ -99,8 +99,8 @@
       box-shadow: 0 4px 20px rgba(166,124,0,0.18);
     }
     .option-card.selected .option-letter {
-      background: linear-gradient(135deg, #ffde59, #e3b023);
-      color: #1a1612;
+      background: linear-gradient(135deg, #E8CD85, #C9A24A);
+      color: #171F35;
       border-color: transparent;
     }
 
@@ -108,7 +108,7 @@
     .heb-input {
       background: #ffffff;
       border: 1.5px solid #d6d0c6;
-      color: #1a1612;
+      color: #171F35;
       border-radius: 12px;
       padding: 13px 16px;
       font-family: 'Heebo', sans-serif;
@@ -128,8 +128,8 @@
 
     /* ── CTA button ── */
     .cta-btn {
-      background: linear-gradient(135deg, #ffde59 0%, #e3b023 100%);
-      color: #1a1612;
+      background: linear-gradient(135deg, #E8CD85 0%, #C9A24A 100%);
+      color: #171F35;
       font-family: 'Heebo', sans-serif;
       font-weight: 700;
       font-size: 16px;
@@ -138,7 +138,7 @@
       border: none;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.22,1,0.36,1);
-      box-shadow: 0 6px 24px rgba(166,124,0,0.35), 0 2px 6px rgba(166,124,0,0.18);
+      box-shadow: 0 6px 20px rgba(27,42,74,0.18), 0 2px 6px rgba(168,132,47,0.20);
       position: relative;
       overflow: hidden;
       letter-spacing: 0.01em;
@@ -152,16 +152,16 @@
       opacity: 0;
       transition: opacity 0.2s;
     }
-    .cta-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 32px rgba(166,124,0,0.42), 0 4px 10px rgba(166,124,0,0.22); }
+    .cta-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 28px rgba(27,42,74,0.24), 0 4px 10px rgba(168,132,47,0.26); }
     .cta-btn:hover::before { opacity: 1; }
     .cta-btn:active { transform: scale(0.99); }
     .cta-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; box-shadow: none; }
 
     /* ── Back button ── */
     .back-btn {
-      background: rgba(26,22,18,0.06);
-      border: 1.5px solid rgba(26,22,18,0.1);
-      color: rgba(26,22,18,0.55);
+      background: rgba(23,31,53,0.06);
+      border: 1.5px solid rgba(23,31,53,0.1);
+      color: rgba(23,31,53,0.55);
       font-family: 'Heebo', sans-serif;
       font-size: 13px;
       padding: 8px 16px;
@@ -172,18 +172,18 @@
       align-items: center;
       gap: 5px;
     }
-    .back-btn:hover { background: rgba(26,22,18,0.1); color: #1a1612; }
+    .back-btn:hover { background: rgba(23,31,53,0.1); color: #171F35; }
 
     /* ── Icon container ── */
     .icon-wrap {
-      background: linear-gradient(135deg, rgba(255,222,89,0.22) 0%, rgba(227,176,35,0.10) 100%);
-      border: 1px solid rgba(227,176,35,0.3);
-      box-shadow: 0 6px 28px rgba(227,176,35,0.16), inset 0 1px 0 rgba(255,255,255,0.9);
+      background: linear-gradient(135deg, rgba(232,205,133,0.22) 0%, rgba(201,162,74,0.10) 100%);
+      border: 1px solid rgba(201,162,74,0.3);
+      box-shadow: 0 6px 28px rgba(201,162,74,0.16), inset 0 1px 0 rgba(255,255,255,0.9);
     }
 
     /* ── Gradient text ── */
     .gradient-text {
-      background: linear-gradient(135deg, #a67c00 0%, #e3b023 55%, #a67c00 100%);
+      background: linear-gradient(135deg, #a67c00 0%, #C9A24A 55%, #a67c00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -192,7 +192,7 @@
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(26,22,18,0.12); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: rgba(23,31,53,0.12); border-radius: 4px; }
 
     /* ── Loading dots ── */
     .dot { animation: pulseSoft 1.4s ease-in-out infinite; }
@@ -200,10 +200,11 @@
     .dot:nth-child(3) { animation-delay: 0.44s; }
 
     /* ── Label secondary ── */
-    .label-main  { color: rgba(26,22,18,0.5);  font-size:14px; font-weight:600; }
-    .label-sub   { color: rgba(26,22,18,0.3);  font-size:12px; }
-    .text-body   { color: rgba(26,22,18,0.62); }
-    .text-muted  { color: rgba(26,22,18,0.35); }
+    .label-main  { color: rgba(23,31,53,0.5);  font-size:14px; font-weight:600; }
+    .label-sub   { color: rgba(23,31,53,0.3);  font-size:12px; }
+    .text-body   { color: rgba(23,31,53,0.74); }
+    .text-muted  { color: rgba(23,31,53,0.35); }
+    .screen ol li::marker { color:#A8842F; font-weight:800; }
   </style>
 </head>
 <body class="min-h-screen overflow-x-hidden">
@@ -211,7 +212,7 @@
   <!-- ── PROGRESS BAR ── -->
   <div id="progressContainer" class="fixed top-0 right-0 left-0 z-50 hidden">
     <div class="h-[3px]" style="background:#e8e2d8">
-      <div id="progressFill" class="progress-fill h-full" style="width:0%;background:linear-gradient(to left,#ffde59,#e3b023)"></div>
+      <div id="progressFill" class="progress-fill h-full" style="width:0%;background:linear-gradient(to left,#E8CD85,#C9A24A)"></div>
     </div>
     <div class="flex items-center justify-between px-5 py-2.5 border-b"
          style="background:rgba(247,244,239,0.92);border-color:#e8e2d8;backdrop-filter:blur(10px)">
@@ -269,13 +270,20 @@
     });
     return {M,H,R};
   }
-  function determineProfile(s) {
+  /* each type's raw score / its max (questions x 2). Shared by determineProfile and the result bars. */
+  function normScores(s) {
     const cnt = {};
     QUESTIONS.forEach(q => { cnt[q.bucket] = (cnt[q.bucket]||0)+1; });
-    const pct = { M: s.M/(cnt.M*2), H: s.H/(cnt.H*2), R: s.R/(cnt.R*2) };
-    if (pct.H > pct.M && pct.H > pct.R) return 'H';
-    if (pct.R > pct.M && pct.R > pct.H) return 'R';
-    return 'M';
+    const n = {};
+    ['M','H','R'].forEach(k => { n[k] = cnt[k] ? (Number(s && s[k])||0) / (cnt[k]*2) : 0; });
+    return n;
+  }
+  /* highest normalised score wins. Tie (within 1e-9): fixed order M, R, H. */
+  function determineProfile(s) {
+    const n = normScores(s);
+    let best = 'M';
+    ['R','H'].forEach(k => { if (n[k] > n[best] + 1e-9) best = k; });
+    return best;
   }
 
   /* ═══ PROGRESS ═══ */
@@ -316,13 +324,13 @@
       <!-- Icon -->
       <div class="relative mb-10 inline-block">
         <div class="absolute inset-0 blur-3xl rounded-full scale-150"
-             style="background:rgba(227,176,35,0.14)"></div>
+             style="background:rgba(201,162,74,0.14)"></div>
         <div class="relative icon-wrap w-24 h-24 rounded-3xl flex items-center justify-center animate-float mx-auto">
           <!-- Compass rose / 4-point star -->
           <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="cg" x1="0" y1="0" x2="46" y2="46" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#ffde59"/>
+                <stop stop-color="#E8CD85"/>
                 <stop offset="1" stop-color="#a67c00"/>
               </linearGradient>
             </defs>
@@ -341,7 +349,7 @@
         </div>
       </div>
 
-      <h1 class="text-3xl sm:text-[2.35rem] font-black leading-tight mb-3" style="color:#1a1612">
+      <h1 class="text-3xl sm:text-[2.35rem] font-black leading-tight mb-3" style="color:#171F35">
         אבחון <span class="gradient-text">Blindspots</span> בדייטים
       </h1>
       <p class="text-lg sm:text-xl font-semibold leading-snug mb-8 text-body">
@@ -351,13 +359,13 @@
       <!-- Value prop card -->
       <div class="card p-6 mb-8 text-right">
         <p class="text-base leading-relaxed mb-5 text-body">
-          בסופו תקבל - <strong style="color:#1a1612">דיאגנוזה חדה וישירה</strong> של דפוס הדייטינג המכשיל שלך,
-          וכיצד להתגבר עליו דרך <strong style="color:#1a1612">פעולות פשוטות וישימות.</strong>
+          בסופו תקבלי: <strong style="color:#171F35">תוצאה חדה וישירה</strong> של דפוס הדייטינג המכשיל שלך,
+          וכיצד להתגבר עליו דרך <strong style="color:#171F35">פעולות פשוטות וישימות.</strong>
         </p>
         <div class="flex flex-col gap-2.5">
           ${[['זיהוי הדפוס שתוקע אותך'],['הסבר פסיכולוגי מעמיק'],['מיקרו-פרקטיקה לשבוע הקרוב']].map(([txt])=>`
           <div class="flex items-center gap-3">
-            <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#e3b023;margin-top:2px"></span>
+            <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#C9A24A;margin-top:2px"></span>
             <span class="text-sm font-medium text-body">${txt}</span>
           </div>`).join('')}
         </div>
@@ -386,12 +394,12 @@
           ${rem > 0 ? rem+' שאלות נותרו' : 'שאלה אחרונה!'}
         </span>
         <span class="text-sm font-bold rounded-full px-3.5 py-1"
-              style="color:#a67c00;background:rgba(227,176,35,0.12);border:1px solid rgba(227,176,35,0.28)">
+              style="color:#a67c00;background:rgba(201,162,74,0.12);border:1px solid rgba(201,162,74,0.28)">
           ${state.currentQ+1} / 16
         </span>
       </div>
 
-      <h2 class="text-xl sm:text-2xl font-bold leading-snug text-right mb-7" style="color:#1a1612">
+      <h2 class="text-xl sm:text-2xl font-bold leading-snug text-right mb-7" style="color:#171F35">
         ${escHtml(q.text)}
       </h2>
 
@@ -402,13 +410,13 @@
           <div class="option-card${sel?' selected':''} p-4 flex items-center gap-4"
                onclick="selectOption(${idx})">
             <div class="option-letter flex-shrink-0 w-10 h-10 rounded-xl border flex items-center justify-center text-base font-bold transition-all duration-200"
-                 style="border-color:${sel?'transparent':'#d6d0c6'};background:${sel?'':'rgba(26,22,18,0.04)'};color:${sel?'#1a1612':'#a67c00'}">
+                 style="border-color:${sel?'transparent':'#d6d0c6'};background:${sel?'':'rgba(23,31,53,0.04)'};color:${sel?'#171F35':'#a67c00'}">
               ${opt.letter}
             </div>
-            <span class="flex-1 text-right font-medium text-base" style="color:rgba(26,22,18,0.82)">${escHtml(opt.label)}</span>
+            <span class="flex-1 text-right font-medium text-base" style="color:rgba(23,31,53,0.82)">${escHtml(opt.label)}</span>
             <div class="flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-200"
-                 style="border-color:${sel?'#e3b023':'#d6d0c6'};background:${sel?'#e3b023':'transparent'}">
-              ${sel?'<div style="width:8px;height:8px;border-radius:50%;background:#1a1612"></div>':''}
+                 style="border-color:${sel?'#C9A24A':'#d6d0c6'};background:${sel?'#C9A24A':'transparent'}">
+              ${sel?'<div style="width:8px;height:8px;border-radius:50%;background:#171F35"></div>':''}
             </div>
           </div>`;
         }).join('')}
@@ -428,25 +436,25 @@
             <polyline points="22,6 12,13 2,6"/>
           </svg>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-black mb-3" style="color:#1a1612">סיימת את השאלון!</h2>
+        <h2 class="text-2xl sm:text-3xl font-black mb-3" style="color:#171F35">סיימת את השאלון!</h2>
         <p class="text-base leading-relaxed text-body">
-          עכשיו יש לנו את הנתונים שצריך.<br/>
-          תשאיר/י מייל ואשלח לך ישר את הדיאגנוזה המלאה שלך -<br/>
-          מי אתה/את בדייטינג, ומה עושים עם זה.
+          עכשיו יש לי את כל מה שצריך.<br/>
+          תשאירי מייל ואשלח לך ישר את התוצאה שלך:<br/>
+          איזה דפוס יש לך בדייטים, ומה עושים איתו.
         </p>
       </div>
 
       <div class="flex flex-col gap-4 mb-6">
         <div>
           <label class="block label-main mb-2 text-right">
-            שם מלא <span class="label-sub">(אופציונלי)</span>
+            שם פרטי <span class="label-sub">(אופציונלי)</span>
           </label>
           <input type="text" id="nameInput" class="heb-input" placeholder="השם שלך"
                  value="${escHtml(state.userName)}" oninput="state.userName=this.value"/>
         </div>
         <div>
           <label class="block label-main mb-2 text-right">
-            כתובת אימייל <span style="color:#a67c00;font-size:12px">(חובה)</span>
+            כתובת מייל <span style="color:#a67c00;font-size:12px">(חובה)</span>
           </label>
           <input type="email" id="emailInput" class="heb-input" placeholder="your@email.com"
                  value="${escHtml(state.userEmail)}" dir="ltr" style="text-align:left"
@@ -456,14 +464,13 @@
       </div>
 
       <button class="cta-btn w-full" onclick="submitLead()">
-        שלח לי את הדיאגנוזה שלי
+        שלחי לי את התוצאה שלי
         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
              style="display:inline-block;margin-right:8px;transform:scaleX(-1);vertical-align:middle">
           <polyline points="9 18 15 12 9 6"/>
         </svg>
       </button>
-      <p class="mt-4 text-center text-xs text-muted">לא ספאם. אפשר להסיר בכל עת.</p>
     </div>`;
   }
 
@@ -472,50 +479,253 @@
     return `
     <div class="screen w-full max-w-sm mx-auto text-center px-4 py-20">
       <div class="relative inline-flex items-center justify-center w-20 h-20 mb-7">
-        <div class="absolute inset-0 rounded-full" style="border:2px solid rgba(227,176,35,0.18)"></div>
+        <div class="absolute inset-0 rounded-full" style="border:2px solid rgba(201,162,74,0.18)"></div>
         <div class="absolute inset-0 rounded-full animate-spin-slow"
-             style="border:2px solid transparent;border-top-color:#e3b023"></div>
+             style="border:2px solid transparent;border-top-color:#C9A24A"></div>
         <!-- Compass spinner center -->
         <svg width="30" height="30" viewBox="0 0 46 46" fill="none">
-          <path d="M23 2 L26.5 20 L23 17 L19.5 20 Z" fill="#e3b023"/>
-          <path d="M23 44 L26.5 26 L23 29 L19.5 26 Z" fill="#e3b023" opacity="0.5"/>
-          <path d="M44 23 L26 26.5 L29 23 L26 19.5 Z" fill="#e3b023" opacity="0.7"/>
-          <path d="M2 23 L20 26.5 L17 23 L20 19.5 Z" fill="#e3b023" opacity="0.5"/>
-          <circle cx="23" cy="23" r="4" fill="#e3b023"/>
+          <path d="M23 2 L26.5 20 L23 17 L19.5 20 Z" fill="#C9A24A"/>
+          <path d="M23 44 L26.5 26 L23 29 L19.5 26 Z" fill="#C9A24A" opacity="0.5"/>
+          <path d="M44 23 L26 26.5 L29 23 L26 19.5 Z" fill="#C9A24A" opacity="0.7"/>
+          <path d="M2 23 L20 26.5 L17 23 L20 19.5 Z" fill="#C9A24A" opacity="0.5"/>
+          <circle cx="23" cy="23" r="4" fill="#C9A24A"/>
           <circle cx="23" cy="23" r="2" fill="white"/>
         </svg>
       </div>
-      <p class="text-base font-semibold mb-3" style="color:#1a1612">מעבד את התשובות שלך…</p>
+      <p class="text-base font-semibold mb-3" style="color:#171F35">מעבד את התשובות שלך…</p>
       <div class="flex justify-center gap-2">
-        <div class="dot w-2 h-2 rounded-full" style="background:#e3b023"></div>
-        <div class="dot w-2 h-2 rounded-full" style="background:#e3b023"></div>
-        <div class="dot w-2 h-2 rounded-full" style="background:#e3b023"></div>
+        <div class="dot w-2 h-2 rounded-full" style="background:#C9A24A"></div>
+        <div class="dot w-2 h-2 rounded-full" style="background:#C9A24A"></div>
+        <div class="dot w-2 h-2 rounded-full" style="background:#C9A24A"></div>
       </div>
     </div>`;
   }
 
-  /* ═══ THANK YOU ═══ */
-  function renderThankyou() {
-    const firstName = state.userName.trim().split(' ')[0] || '';
-    return `
-    <div class="screen w-full max-w-md mx-auto px-2 py-16 text-center">
+  /* ═══ RESULT = MINI LANDING PAGE -> GOOGLE CALENDAR (25.11, version J, FINAL) ═══
+     J = I + improvement round 3 (one name, one wording, truth, consent):
+     one call name everywhere ("שיחה אישית"), one button label ("לבחור שעה לשיחה"),
+     one set of call steps (CALL_COPY, shared with the day-0 email), shorter path to the
+     first button (no duplicate opening paragraph, mix note merged), H bullets start with
+     "את יוצאת, את פתוחה", weekMore line per type for months / undefined / ex / beginners,
+     proof = 2 WhatsApp shots + Hadar's written quote (after a process), accurate last line,
+     "צ׳אנס" -> "סיכוי". Day-0 email is built from the same RESULT_COPY + CALL_COPY.
+     ---- I notes: ----
+     recognition bullets cover all patterns, "לא בדיוק את?" line, Lior's photo + training
+     line, phone-field line, WhatsApp shots cropped to the bubble.
+     ---- H / G notes: ----
+     bars use the same normalisation as determineProfile, book_click beacon on both buttons,
+     value first (bars, 3 tips, weekly action), Zoom only. Button goes straight to Google booking. */
+  const BOOK_URL = 'https://calendar.app.google/zxFoT3upRrrrn61Q8';
+  const WA_URL = 'https://wa.me/972543448000';
+  const LIOR_PHOTO = 'https://liorochman.com/assets/lior-rochman.jpg';
+  const GOLD_TXT = '#7d5c00'; /* small gold text/links: 5.4:1 on #f7f4ef */
 
-      <div class="mb-6 animate-float inline-flex items-center justify-center w-20 h-20 rounded-3xl icon-wrap">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
-             stroke="#a67c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
+  const VARIANT = { id: 'J', headline: 'בכל דבר אחר את יודעת להצליח. רק בזוגיות הקשר לא נמשך.' };
+
+  /* ONE wording for the call, used by the page AND the day-0 email (and copied verbatim into e0-e6). */
+  const CALL_COPY = {
+    name: 'שיחה אישית',
+    title: 'שיחה אישית, 45 דקות, בחינם',
+    sub: 'בזום, בשעה שנוחה לך. אפשר לקבוע גם לשבוע הבא.',
+    steps: ['את מספרת לי על הקשר או הדייט האחרון שנתקע, או על מה שעוצר אותך לצאת.',
+            'אנחנו מוצאים את הרגע המדויק שבו זה קורה אצלך.',
+            'את יוצאת עם דבר אחד לעשות אחרת בפעם הבאה.'],
+    paid: 'אם אחשוב שתהליך ליווי בתשלום יכול לעזור לך, אגיד את זה בסוף השיחה, ואת מחליטה. אם לא, יצאת עם הכיוון שלך.',
+    button: 'לבחור שעה לשיחה',
+    howto: 'נפתח היומן: בוחרים שעה, ממלאים שם, מייל וטלפון (הטלפון רק אם צריך לתאם מחדש).'
+  };
+
+  const RESULT_COPY = {
+    R: { tag:'הרומנטיקנית',
+      others:'אצל אחרות זה אקס שעוד לא יצא מהראש, או התחלה מחדש אחרי הפסקה ארוכה.',
+      mirror:'את מחכה לרגע שבו פשוט תדעי. וכשהוא לא מגיע מהר, קשה לך לתת לזה סיכוי.',
+      moments:['יצאת עם מישהו נחמד, טוב אלייך, ובדרך הביתה אמרת לחברה "אין ניצוץ".','היה ערב מעולה, צחקתם שעות, ואז הוא נעלם, ואת מנסה להבין מה עשית לא נכון.','הכל טוב חודש-חודשיים, ואז, בדיוק כשזה אמור להתייצב, משהו בך מתחיל לחפש את הסדק.','את כבר כמה חודשים בתוך משהו, טוב לך, ואת מפחדת לשאול "מה אנחנו" כדי לא לקלקל.'],
+      why:'ממה שאני רואה אצל מתאמנות, הניצוץ שאת מחפשת הוא הרבה פעמים התרגשות מאי-ודאות, ולא סימן להתאמה.',
+      tips:['תתמקדי פחות ב"אריזה": הוא אולי ייראה אחרת ממה שדמיינת.','תפסיקי לחפש את פגישת הקולנוע. מה שחשוב זה שנפגשתם, לא איך.','כשהכל רגוע ופתאום משעמם לך, זה לא סימן שנגמר. הרבה פעמים זה סימן שנהיה בטוח.'],
+      noBlame:'זה לא אומר שמשהו לא בסדר איתך. זה אומר שהמדד שבו את בודקת דייט ראשון עובד נגדך.',
+      week:'בפעם הבאה שאת יוצאת עם מישהו בסדר בלי ניצוץ, תני לו עוד דייט אחד. ובסופו תשאלי את עצמך: "איך הרגשתי לידו?" ולא "התרגשתי?".',
+      weekMore:'ואם את כבר חודשים בתוך קשר, עם הגדרה או בלי: השבוע תשאלי שאלה אחת קטנה על מה שאת רוצה, ותשימי לב מה קורה בך רגע לפני.' },
+    M: { tag:'הממקסמת',
+      others:'אצל אחרות זה גבר שנעלם אחרי דייט מעולה, קשר בלי שם, או התחלה מחדש אחרי גירושים.',
+      mirror:'את לא מחפשת מישהו טוב. את מחפשת את הכי טוב. ובדרך, כל מי שטוב נראה כמו פשרה.',
+      moments:['אחרי דייט שני את כבר מוצאת את הדבר האחד שלא מסתדר לך.','או שזה מחזיק חודשיים-שלושה, ואז פתאום את רואה רק את מה שחסר.','את ממשיכה לגלול באפליקציה גם כשמישהו שמעניין אותך כבר כותב לך.','עוד לא באמת יצאת ממה שהיה, גם אם עברו שנה-שנתיים, וכל מי שחדש נמדד מולו.'],
+      why:'בעבודה, להשוות אפשרויות זה יתרון. בזוגיות, ההשוואה עצמה מורידה את הערך של מי שמולך.',
+      tips:['תגדירי לעצמך 3-5 קריטריונים חשובים באמת, ותשחררי את כל השאר.','דייט היה סביר? תצאי לעוד 2 לפני שאת חותכת.','את לא מחפשת מישהו בלי פגמים. את מחפשת מישהו שהפגמים שלו עובדים בשבילך.'],
+      noBlame:'זה לא אומר שאת בררנית מדי. זה אומר שהשיטה שעובדת לך בכל מקום אחר מפריעה דווקא פה.',
+      week:'תבחרי מישהו אחד שהיה בסדר, ותני לו עוד 2 דייטים בלי לפתוח את האפליקציה באמצע. תשימי לב מה קורה לרשימה שלך כשאין לה עם מה להשוות.',
+      weekMore:'ואם את כבר חודשיים-שלושה בקשר, או שעוד לא יצאת ממה שהיה: בכל פעם שאת משווה, תכתבי גם דבר אחד שיש פה עכשיו.' },
+    H: { tag:'המהססת',
+      others:'אצל אחרות זה גבר שנעלם אחרי דייט מעולה, קשר בלי שם, או אקס שעוד לא יצא מהראש.',
+      mirror:'את רוצה זוגיות, ומשהו תמיד עוצר אותך רגע לפני שזה נהיה רציני.',
+      moments:['את יוצאת, את פתוחה, ובכל זאת כשזה מתקרב באמת, משהו בך נסגר.','מחקת את האפליקציה, או אמרת לחברות "לא עכשיו", ותמיד הייתה סיבה טובה.','אחרי גירושים, אחרי הפסקה ארוכה, או כי כמעט לא יצאת, את לא בטוחה מאיפה מתחילים.','כשמישהו מתעניין, הדבר הראשון שעולה לך הוא איך לצאת מזה בעדינות.'],
+      why:'ממה שאני רואה אצל מתאמנות, המוכנות נבנית בתוך הדייטים, לא לפניהם.',
+      tips:['תתחילי קטן: אפליקציה אחת, או להגיד לחברה אחת "כן, תכירי לי מישהו".','כבר יוצאת ונסגרת? בפעם הבאה שעולה לך "איך יוצאים מזה", תישארי לעוד שאלה אחת, ורק תשימי לב מה קורה בך.','תשתפי חברה בהחלטה, ותהיי עדינה עם עצמך. זה תהליך.'],
+      noBlame:'זה לא אומר שאת לא רוצה אהבה. זה אומר שהדרך שבה את מגינה על עצמך שומרת אותך רחוק ממה שאת רוצה.',
+      week:'צעד אחד השבוע: דייט קצר אחד, קפה אחד, בלי ציפיות. המטרה היחידה: לשים לב לרגע שבו בא לך לברוח, ולהישאר עוד רגע.',
+      weekMore:'רק מתחילה, או חוזרת אחרי הפסקה ארוכה? הצעד שלך השבוע הוא הטיפ הראשון, וזה מספיק.' }
+  };
+
+  /* her mix of the three patterns, from state.scores.
+     Same normalisation as determineProfile (normScores: raw / max per type), then scaled to 100%.
+     determineProfile picks the highest normalised type, so her bar is always the top one. */
+  function scoreBars() {
+    const NAMES = { R:'הרומנטיקנית', M:'הממקסמת', H:'המהססת' };
+    const raw = normScores(state.scores || {});
+    const sum = raw.R + raw.M + raw.H;
+    const pct = {}; ['R','M','H'].forEach(k => { pct[k] = sum ? Math.round(raw[k]*100/sum) : 33; });
+    const me = state.profile || determineProfile(state.scores || {});
+    const diff = 100 - (pct.R + pct.M + pct.H);
+    if (diff >= 0) pct[me] += diff;                       /* rounding remainder goes to her type */
+    else { const lo = ['R','M','H'].filter(k => k !== me).sort((a,b) => pct[a]-pct[b])[0]; pct[lo] += diff; }
+    const order = [me].concat(['R','M','H'].filter(k => k !== me).sort((a,b) => pct[b]-pct[a]));
+    return order.map(k => {
+      const mine = k === me;
+      return `<div class="mb-3">
+        <div class="flex justify-between text-base mb-1" style="${mine ? 'color:#171F35;font-weight:800' : 'color:rgba(23,31,53,0.74)'}"><span>${NAMES[k]}</span><span>${pct[k]}%</span></div>
+        <div style="height:10px;border-radius:6px;background:rgba(23,31,53,0.07);overflow:hidden"><div class="score-fill" data-k="${k}" data-pct="${pct[k]}" style="height:100%;width:${pct[k]}%;border-radius:6px;background:${mine ? 'linear-gradient(90deg,#E2C374,#C9A24A)' : 'rgba(23,31,53,0.22)'}"></div></div>
+      </div>`;
+    }).join('');
+  }
+
+  /* click on a booking button: Meta pixel + beacon to the Apps Script webhook.
+     Never blocks: the <a> opens the calendar by itself, errors are swallowed. */
+  function bookClick(placement) {
+    try {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Schedule', { content_name:'blindspot_call', profile: state.profile, placement, variant: VARIANT.id });
+      }
+    } catch (e) {}
+    try {
+      fetch(ZAPIER_WEBHOOK, {
+        method: 'POST', mode: 'no-cors', keepalive: true,
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ event: 'book_click', email: state.userEmail, profile: state.profile, placement })
+      }).catch(() => {});
+    } catch (e) {}
+  }
+
+  function bookButton(placement) {
+    return `<a class="cta-btn w-full block text-center" href="${BOOK_URL}" target="_blank" rel="noopener"
+      onclick="bookClick('${placement}')">${CALL_COPY.button}</a>`;
+  }
+
+  /* real WhatsApp screenshots, cropped to the message bubble (no wallpaper / scrollbar)
+     and shown at one width: [file, natural w, natural h, crop x, crop y, crop w, crop h].
+     call-w2 ("אני יוצאת עכשיו מהדייט השני") is NOT here: it is the heart of e3, so page and e3 don't repeat. */
+  const WA_SHOTS = [
+    ['call-w3b', 845, 363, 0, 0, 845, 363],
+    ['call-w4', 900, 347, 40, 22, 657, 312]
+  ];
+  function waShot([f, W, Hh, x, y, cw, ch]) {
+    return `<div style="width:100%;max-width:300px;margin-left:auto;margin-right:0;aspect-ratio:${cw}/${ch};position:relative;overflow:hidden;border-radius:18px;background:#fff;border:1px solid rgba(166,124,0,0.18);box-shadow:none">
+      <img src="https://group.liorochman.com/assets/${f}.webp" alt="הודעת וואטסאפ אמיתית ממתאמנת" loading="lazy" style="position:absolute;max-width:none;width:${(W*100/cw).toFixed(3)}%;height:auto;left:${(-x*100/cw).toFixed(3)}%;top:${(-y*100/ch).toFixed(3)}%">
+    </div>`;
+  }
+  /* Hadar's written testimonial, verbatim excerpts from liorochman.com call page (group.liorochman.com/call) */
+  /* real written testimonials with photos, verbatim excerpts from the call page (_deploy/group/call.html testi-cards) */
+  const TESTIMONIALS = [
+    { name:'ענבל', meta:'25, מעצבת אופנה, אחרי תהליך', img:'Ezg6120nf.jpg',
+      quote:'"כיוון אותי למקומות המדויקים לי ביותר, וזו באמת הפעם הראשונה שאני מצליחה לצאת לדרך בביטחון ובכיף."' },
+    { name:'חני', meta:'36, מורה, אחרי תהליך', img:'Pm1889yP.jpeg',
+      quote:'"בתהליך עשיתי קפיצה שלא האמנתי שאפשרית... אני תופסת את עצמי אחרת, ופועלת מתוך הפרדיגמה החדשה."' },
+    { name:'הדר', meta:'46, רואת חשבון, אחרי תהליך', img:'sY2334Nz.jpeg',
+      quote:'"התחלתי לעבוד עם אמונה שפעם ראשונה זה יכול לעבוד... לאחרונה אחרי ארבע שנים אני בתחילתה של זוגיות חדשה."' }
+  ];
+
+  function renderThankyou() {
+    /* name comes from the quiz input (state.userName); empty name -> plain header */
+    const firstName = (state.userName || '').trim().split(/\s+/)[0] || '';
+    const r = RESULT_COPY[state.profile] || RESULT_COPY.R;
+    const H2 = 'text-xl sm:text-2xl font-black mb-3';
+    const CARD = 'background:#fff;border:1px solid rgba(166,124,0,0.18);border-radius:18px';
+    const INK = 'color:#171F35';
+    const LINK = `color:${GOLD_TXT};text-decoration:underline;font-weight:600`;
+    return `
+    <div class="screen w-full max-w-md mx-auto px-2 py-10 text-right">
+
+      <img src="${LOGO_SRC}" alt="ליאור רוכמן אימון מנטלי" class="mx-auto mb-6 select-none" style="height:30px;width:auto" draggable="false" />
+
+      <!-- 1. the result, short -->
+      <p class="text-base font-bold mb-2 text-center" style="color:${GOLD_TXT};letter-spacing:.02em">${firstName ? escHtml(firstName) + ', הדפוס שלך בדייטים' : 'הדפוס שלך בדייטים'}</p>
+      <h1 class="text-4xl font-black leading-tight mb-3 text-center" style="${INK}">${r.tag}</h1>
+      <p class="text-base leading-relaxed mb-2 text-center text-body">${r.mirror}</p>
+      <p class="text-base mb-8 text-center"><a href="#call" onclick="var c=document.getElementById('call');if(c){c.scrollIntoView({behavior:'smooth'});}return false;" style="display:inline-block;padding:10px 18px;border:1px solid rgba(168,132,47,0.4);border-radius:999px;background:#fff;color:${GOLD_TXT};font-weight:700;text-decoration:none">ובסוף, אם תרצי: ${CALL_COPY.name} איתי, בחינם ↓</a></p>
+
+      <!-- 2. the core message (situations are named once, in the bullets + "לא בדיוק את?") -->
+      <h2 class="text-xl sm:text-2xl font-black leading-snug mb-3" style="${INK}">${VARIANT.headline}</h2>
+      <p class="text-base leading-relaxed text-body mb-8">זה לא עניין של מזל. יש רגע אחד שחוזר, שוב ושוב, ו"${r.tag}" מתארת איך הוא נראה אצלך.</p>
+
+      <!-- 3. recognition + why + no-blame -->
+      <h2 class="${H2}" style="${INK}">זה נשמע כמו את אם...</h2>
+      <ul class="text-base leading-relaxed text-body mb-4" style="list-style:none;padding:0">
+        ${r.moments.map(m => `<li class="mb-3" style="padding-right:18px;position:relative"><span style="position:absolute;right:0;color:#A8842F">•</span>${m}</li>`).join('')}
+      </ul>
+      <p class="text-base leading-relaxed text-body mb-6">לא בדיוק את? ${r.others} בשיחה רואים איך זה נראה אצלך.</p>
+      <p class="text-base leading-relaxed text-body mb-3">${r.why}</p>
+      <p class="text-base leading-relaxed font-bold mb-8" style="${INK}">${r.noBlame}</p>
+
+      <!-- 4. value first: her mix, 3 tips + this week (one card) -->
+      <div class="p-5 mb-4" style="${CARD}">
+        <h2 class="text-xl font-black mb-4" style="${INK}">התמהיל שלך, לפי התשובות בשאלון</h2>
+        ${scoreBars()}
+      </div>
+      <div class="p-5 mb-8" style="${CARD}">
+        <h2 class="text-xl font-black mb-3" style="${INK}">3 טיפים שלי ל${r.tag.replace(/^ה/, '')}</h2>
+        <ol class="text-base leading-relaxed text-body mb-4" style="padding-right:20px;list-style:decimal">
+          ${r.tips.map(t => `<li class="mb-2">${t}</li>`).join('')}
+        </ol>
+        <div style="border-top:1px solid rgba(166,124,0,0.18);padding-top:14px">
+          <p class="text-base font-bold mb-1" style="color:${GOLD_TXT}">ומה לעשות השבוע</p>
+          <p class="text-base leading-relaxed text-body mb-2">${r.week}</p>
+          <p class="text-base leading-relaxed text-body">${r.weekMore}</p>
+        </div>
       </div>
 
-      <h1 class="text-2xl sm:text-3xl font-black mb-4" style="color:#1a1612">
-        תודה על הזמן שלך${firstName?', '+escHtml(firstName):''}!
-      </h1>
-      <p class="text-base leading-relaxed mb-10 text-body">
-        אני שולח לך את תשובות השאלון במייל<br/>בתוך מספר דקות.<br/>לא מצאת אותו? תבדוק בתיקיית הספאם.
-      </p>
+      <!-- 5. bridge (continues from the tips) + who am I + offer -->
+      <h2 class="text-xl sm:text-2xl font-black leading-snug mb-3" style="${INK}">עכשיו את יודעת מה הדפוס. נשאר למצוא איפה בדיוק הוא תופס אותך.</h2>
+      <p class="text-base leading-relaxed text-body mb-5">השאלון רואה את התמונה הכללית. הוא לא רואה את הדייט, את המשפט ואת הרגע שבו זה נעצר אצלך. את זה מוצאים יחד, בשיחה אחת על הסיפור שלך.</p>
+      <div class="flex items-start gap-3 mb-5">
+        <img src="${LIOR_PHOTO}" alt="ליאור רוכמן" width="64" height="64" loading="lazy" style="width:64px;height:64px;min-width:64px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:2px solid rgba(166,124,0,0.35)">
+        <p class="text-base leading-relaxed text-body">אני ליאור רוכמן, מאמן מנטלי ומלמד אימון מנטלי. ליוויתי מאות מתאמנים, ועם אשתי להב אני מגיש את הפודקאסט <a href="https://pod.link/6804400587" target="_blank" rel="noopener" style="${LINK}">מדליקים את האור</a>.</p>
+      </div>
+      <div id="call" class="p-6 mb-4" style="${CARD};scroll-margin-top:16px">
+        <h2 class="text-xl font-black mb-1" style="${INK}">${CALL_COPY.title}</h2>
+        <p class="text-base leading-relaxed text-body mb-4">${CALL_COPY.sub}</p>
+        <ol class="text-base leading-relaxed text-body mb-4" style="padding-right:20px;list-style:decimal">
+          ${CALL_COPY.steps.map(s => `<li class="mb-1">${s}</li>`).join('')}
+        </ol>
+        <p class="text-base leading-relaxed text-body">בלי לחץ: ${CALL_COPY.paid}</p>
+        <div class="mt-5">${bookButton('top')}</div>
+      </div>
+      <p class="mt-3 text-center text-base text-body leading-relaxed">${CALL_COPY.howto} אפשר גם בלי מצלמה.</p>
+      <p class="mt-2 mb-8 text-center text-base text-body">מעדיפה לכתוב קודם? <a href="${WA_URL}" target="_blank" rel="noopener" style="${LINK}">וואטסאפ</a></p>
 
-      <img src="${LOGO_SRC}" alt="ליאור רוכמן אימון מנטלי" class="mx-auto mt-12 select-none opacity-80" style="height:26px;width:auto" draggable="false" />
+      <!-- 6. proof: 2 real WhatsApp messages + Hadar's written testimonial -->
+      <h2 class="${H2}" style="${INK}">מה כתבו לי מתאמנות</h2>
+      <div class="flex flex-col gap-3 mb-3">
+        ${WA_SHOTS.map(waShot).join('')}
+      </div>
+      <div class="flex flex-col gap-3 mb-8">
+        ${TESTIMONIALS.map(t => `<div class="p-4" style="${CARD}">
+          <div class="flex items-center gap-3 mb-2">
+            <img src="https://group.liorochman.com/assets/${t.img}" alt="${t.name}" width="44" height="44" loading="lazy" style="width:44px;height:44px;min-width:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(166,124,0,0.35)">
+            <p class="text-base leading-snug"><strong style="${INK}">${t.name}</strong><br><span class="text-body">${t.meta}</span></p>
+          </div>
+          <p class="text-base leading-relaxed text-body">${t.quote}</p>
+        </div>`).join('')}
+      </div>
+
+      ${bookButton('bottom')}
+
+      <!-- 7. FAQ -->
+      <div class="mt-8 mb-3 text-base leading-relaxed text-body">
+        <p class="mb-3"><strong style="${INK}">מה להכין לשיחה?</strong> דוגמה אחת לדייט או לקשר שנעצר. אין קשר מהזמן האחרון? אפשר להביא דייט שלא קבעת, או את הפעם האחרונה שאמרת "לא עכשיו".</p>
+      </div>
+
+      <!-- 8. not now (accurate: the email has the result, tips and weekly task, not everything on this page) -->
+      <p class="text-center text-base leading-relaxed text-body">
+        לא מתאים לך עכשיו? הכל טוב. התוצאה והטיפים שלך נשלחים גם למייל (לא הגיע? כדאי לבדוק בספאם).
+      </p>
     </div>`;
   }
 
@@ -523,142 +733,82 @@
      הדבק כאן את ה-Google Apps Script Web App URL לאחר הפריסה
      Google Sheets ID: 1BFzQWSVSXcTDq2t-ODJ1rgFpnwZEfNI1wt6HJ9YzSsw
   ══════════════════════════════════════════════════════════════ */
-  const ZAPIER_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyGkakNaPOIZLvhcS8dQtdILvwnSfORuKJDEjojaYYHvxUf1qHZoZMxnOJloORNRFEw/exec';
+  const ZAPIER_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyWG67TkPjigMMqTN3MvuhK3nS4Lb9l3ZXZVPeC-VjH5_Ye37BFu-IsrxYakp2lMR0/exec';
   const ZAPIER_FOLLOWUP_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26838647/4235nfs/';
-  const COURSE_URL = 'https://digitalcourse.liorochman.com/?utm_source=blindspot_quiz&utm_medium=email&utm_campaign=quiz_result';
 
-  function buildEmailHtml(profile, userName, scores) {
-    const firstName = (userName || '').trim().split(' ')[0] || 'שלום';
+  /* Day-0 result email, version J (round 3, FINAL).
+     Built from the page's RESULT_COPY + CALL_COPY, so the tips, the weekly task, the call name,
+     the call steps and the button label are the SAME as the page.
+     Order: result summary -> call block -> tips + this week -> series line (only with consent) -> footer.
+     Sent by Apps Script (GmailApp), NOT by MailerLite, so it carries its own sender + opt-out footer
+     (Communications Law section 30A(e)). SENDER_ADDRESS: Lior fills in a mailing address; empty = line omitted. */
+  const SENDER_ADDRESS = 'דוד מרכוס 16, תל אביב';
+  function buildEmailHtml(profile, userName, scores, consent) {
+    const firstName = (userName || '').trim().split(' ')[0] || '';
+    const r = RESULT_COPY[profile] || RESULT_COPY.R;
+    const typeName = r.tag.replace(/^ה/, '');
+    const C = CALL_COPY;
 
-    const profiles = {
-      M: {
-        tag: 'הממקסם',
-        motto: 'למה להתפשר כשיכולה להיות מישהי טובה יותר מעבר לפינה?',
-        who: '<strong>מי שאתה כממקסם:</strong> אתה אוהב לחקור את כל האפשרויות, להפוך כל אבן, ולא לעצור עד שאתה בטוח ב-100% שמצאת את הבחירה המושלמת. אתה מקבל החלטות בזהירות ורוצה ודאות לפני שאתה מתחייב. הבעיה? החיפוש אחר הוודאות הזו הוא בדיוק מה שתוקע אותך.',
-        sectionTitle: 'פרדוקס עודף הבחירה: למה אתה לא עוצר?',
-        body1: 'בצד השני של הספקטרום נמצאים <strong>המסתפקים</strong> - אנשים עם קריטריונים ברורים, שברגע שמוצאים מישהי שעונה עליהם, עוצרים ומשקיעים. מחקרים מראים שמסתפקים מאושרים יותר במערכות יחסים שלהם.',
-        body2: 'כשאתה מחפש 95% התאמה מראש - אתה מפעיל לחץ לא הגיוני על שלב הסינון. <strong>האדם חשוב, אבל העבודה המשותפת שתבנו יחד היא שתקבע את הצלחת הקשר.</strong>',
-        tipsTitle: 'הטיפים שלי לממקסם:',
-        tips: [
-          'הגדר לעצמך 3-5 קריטריונים חשובים באמת - ושחרר את כל השאר.',
-          '<strong>חוק 3 הדייטים</strong> - אם הדייט היה סביר, צא לעוד 2 לפני שאתה חותך. תן לכימיה האמיתית להתפתח.',
-          'אתה לא מחפש מישהי ללא פגמים. אתה מחפש מישהי שהפגמים שלה עובדים בשבילך.'
-        ],
-        weekTitle: 'מה לעשות השבוע:',
-        week: 'החל מהיום - אם יצאת לדייט שהיה סביר, אתה מחויב ל-<strong>3 דייטים מלאים</strong> לפני שאתה מחליט. תן לכימיה האמיתית הזדמנות להתפתח מעבר לרושם הראשוני.',
-        others: [
-          '<strong>המהסס</strong> - לא מאמין שמוכן לדייטינג. מחכה להפוך לגרסה המושלמת של עצמו. הבעיה: "מוכן" זה לא מצב שמגיע - זו בחירה שעושים.',
-          '<strong>הרומנטיקן</strong> - מאמין בנפש תאומה ובאהבה חסרת מאמץ מהרגע הראשון. ומפספס אנשים מדהימים כי הניצוץ לא היה מיידי.'
-        ],
-        ctaCopy: 'הממקסם הקלאסי בנה פרופיל שמביא כמות - לא איכות. אז הוא ממשיך לדפדף.<br>​<br>בפרוטוקול 17 הימים אני מלמד אותך לבנות פרופיל שמביא התאמות איכותיות שמתאימות לך- פעם אחת להשקיע כמו שצריך באפליקציה, כדי למחוק אותה כמה שיותר מהר.',
-        seriesCopy: 'ריכזתי עבורך סדרה קצרה של 6 מיילים בשבוע וחצי הקרובים, דרך המשקפיים של דפוס \'הממקסם\'. נדבר על האמונות שחוסמות אותך, ואיך הדפוס שלך נראה בפרופיל ההיכרויות, כולל מבחן של 5 דקות שעושים מהטלפון. המייל הראשון יגיע בעוד יומיים, שווה לעקוב.'
-      },
-      H: {
-        tag: 'המהסס',
-        motto: 'אני אכנס חזק לדייטים רק כשאהיה הגרסה המושלמת של עצמי.',
-        who: '<strong>מי שאתה כמהסס:</strong> אתה לא מאמין שאתה מוכן לדייטינג עכשיו, כי אתה עדיין לא האדם שאתה רוצה להיות. יש לך סטנדרטים גבוהים לעצמך ואתה רוצה להרגיש מוכן לפני שאתה מתחיל. הבעיה? <strong>"מוכן" הוא לא מצב שמגיע - הוא בחירה שעושים.</strong>',
-        sectionTitle: 'אשליית ה"אהיה מוכן" - ולמה אי אפשר להתאמן על יבש',
-        body1: 'לעולם לא תהיה מוכן ב-100% לשום דבר משמעותי בחיים. שלמות היא מנגנון הגנה שהמוח שלך מייצר כדי למנוע ממך להיפגע. כולם בחוץ פגומים ולא מושלמים - כולל האדם המדהים שאתה עתיד לפגוש.',
-        body2: 'דייטינג הוא כמו ללמוד לשחות - <strong>אי אפשר להתאמן בתוך הראש שלך.</strong> אתה חייב לקפוץ למים. ורק מעצם הקפיצה - תתחיל להתקדם.',
-        tipsTitle: 'הטיפים שלי למהסס:',
-        tips: [
-          '<strong>קבע לעצמך דדליין</strong> - מתי אתה מתחיל לצאת לדייטים. לא כשתרד במשקל, לא כשתרוויח יותר. עכשיו.',
-          '<strong>התחל קטן אבל עקבי</strong> - שיחה אחת, אפליקציה אחת. לא צריך לעבור מ-0 לדייט כל יום.',
-          '<strong>שתף חברים בהחלטה</strong> - הם יחזיקו אותך אחראי. ותהיה עדין עם עצמך - זה תהליך.'
-        ],
-        weekTitle: 'מה לעשות השבוע:',
-        week: 'הורד אפליקציית היכרויות אחת.<br>​<br>הקדש לה בדיוק 15 דקות לפתיחת פרופיל - לא מושלם, טוב מספיק. ויזום שיחה אחת.<br>​<br>המטרה אינה למצוא חתונה - המטרה היא להוכיח למוח שלך שהשמיים לא נופלים.',
-        others: [
-          '<strong>הממקסם</strong> - אוהב לחקור את כל האפשרויות ולא עוצר. תמיד יכולה להיות מישהי טובה יותר בפינה הבאה.',
-          '<strong>הרומנטיקן</strong> - מאמין בנפש תאומה ובאהבה חסרת מאמץ מהרגע הראשון. ומפספס אנשים מדהימים כי הניצוץ לא היה מיידי.'
-        ],
-        ctaCopy: 'המהסס הקלאסי בנה פרופיל שמביא כמות - לא איכות. אז הוא ממשיך לדפדף.<br>​<br>בפרוטוקול 17 הימים אני מלמד אותך לבנות פרופיל שמביא התאמות איכותיות שמתאימות לך- פעם אחת להשקיע כמו שצריך באפליקציה, כדי למחוק אותה כמה שיותר מהר.',
-        seriesCopy: 'ריכזתי עבורך סדרה קצרה של 6 מיילים בשבוע וחצי הקרובים, דרך המשקפיים של דפוס \'המהסס\'. נדבר על האמונות שחוסמות אותך, ואיך הדפוס שלך נראה בפרופיל ההיכרויות, כולל מבחן של 5 דקות שעושים מהטלפון. המייל הראשון יגיע בעוד יומיים, שווה לעקוב.'
-      },
-      R: {
-        tag: 'הרומנטיקן',
-        motto: 'זה יקרה כשזה אמור לקרות. האהבה שלי תהיה מושלמת מהרגע הראשון.',
-        who: '<strong>מי שאתה כרומנטיקן:</strong> אתה רוצה את הנפש התאומה, את "חיו באושר ועושר" - את הפיות כולה. אתה מאמין שאתה רווק כי עדיין לא פגשת את האדם הנכון. אתה מחכה לניצוץ, לסיפור הקולנועי. <strong>הבעיה? הציפיות האלה מסנות אנשים מדהימים לפני שנתת להם סיכוי.</strong>',
-        sectionTitle: 'מלכודת "נפש תאומה" מול המציאות של "עובדים על זה"',
-        body1: 'הפסיכולוגית Renae Franiuk מצאה שיש שתי תפיסות להצלחה בזוגיות. בעלי <strong>תפיסת "נפש תאומה"</strong> פוסלים פרטנרים מבטיחים כי הם לא מתאימים לחזון האידיאלי - ומצפים שאהבה תהיה קלה ונטולת מאמץ. לעומתם, בעלי <strong>תפיסת "עובדים על זה"</strong> מאמינים שהצלחת הקשר תלויה בעבודה שמשקיעים בה.',
-        body2: '<strong>מה שחשוב הוא לא איך נפגשתם, אלא מי האדם שמולך עכשיו.</strong> אם קשר דורש עבודה - זה לא אומר שמשהו לא בסדר. זה אומר שאתם עושים את זה נכון.',
-        tipsTitle: 'הטיפים שלי לרומנטיקן:',
-        tips: [
-          '<strong>התמקד פחות ב"אריזה" החיצונית</strong> - השותף העתידי שלך אולי ייראה אחרת ממה שדמיינת. היה פתוח לכך.',
-          '<strong>הפסק לחפש את פגישת הקולנוע</strong> - מה שחשוב הוא לא איך נפגשתם, אלא שנפגשתם.',
-          '<strong>עבור לתפיסת "עובדים על זה"</strong> - שכח שאהבה צריכה להיות חסרת מאמץ. אם זה מרגיש כמו עבודה - אתה עושה את זה נכון.'
-        ],
-        weekTitle: 'מה לעשות השבוע:',
-        week: 'תן סיכוי למישהי שלא מתאימה ב-100% לפנטזיה החזותית שלך - אבל משדרת ערכים טובים, יציבות וכנות.<br>​<br>שאל את עצמך: <strong>"האם מעניין לי איתה עכשיו?"</strong> - לא "האם היא מושלמת?"',
-        others: [
-          '<strong>הממקסם</strong> - אוהב לחקור את כל האפשרויות ולא עוצר. תמיד יכולה להיות מישהי טובה יותר בפינה הבאה.',
-          '<strong>המהסס</strong> - לא מאמין שמוכן לדייטינג. מחכה להפוך לגרסה המושלמת של עצמו. הבעיה: "מוכן" זה לא מצב שמגיע - זו בחירה שעושים.'
-        ],
-        ctaCopy: 'הרומנטיקן הקלאסי בנה פרופיל שמביא כמות - לא איכות. אז הוא ממשיך לדפדף.<br>​<br>בפרוטוקול 17 הימים אני מלמד אותך לבנות פרופיל שמביא התאמות איכותיות שמתאימות לך- פעם אחת להשקיע כמו שצריך באפליקציה, כדי למחוק אותה כמה שיותר מהר.',
-        seriesCopy: 'ריכזתי עבורך סדרה קצרה של 6 מיילים בשבוע וחצי הקרובים, דרך המשקפיים של דפוס \'הרומנטיקן\'. נדבר על האמונות שחוסמות אותך, ואיך הדפוס שלך נראה בפרופיל ההיכרויות, כולל מבחן של 5 דקות שעושים מהטלפון. המייל הראשון יגיע בעוד יומיים, שווה לעקוב.'
-      }
-    };
+    const FONT = "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif";
+    const P = `margin:1em 0;${FONT};color:#171F35;font-size:16px;line-height:1.5;direction:rtl;text-align:right`;
+    const H = `margin:1.4em 0 0.4em;${FONT};color:#1B2A4A;font-size:17px;font-weight:700;line-height:1.4;direction:rtl;text-align:right`;
+    const SMALL = `margin:0 0 1em;${FONT};color:#5a5a5e;font-size:15px;line-height:1.5;direction:rtl;text-align:center`;
+    const FOOT = `margin:2em 0 0;padding-top:12px;border-top:1px solid #ececec;${FONT};color:#6b6b70;font-size:13px;line-height:1.5;direction:rtl;text-align:center`;
+    const UL = `margin:0.6em 0 1em;margin-right:22px;padding:0;${FONT};color:#171F35;font-size:16px;line-height:1.5;direction:rtl;text-align:right;list-style-position:outside !important`;
+    const LI = "padding:0 4px 0 0;margin:0 0 0.4em";
 
-    const d = profiles[profile];
-
-    const P = "margin:1em 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#2d2d2f;font-size:16px;line-height:1.5;direction:rtl;text-align:right";
-    const UL = "margin:1em 0;margin-right:1.5em;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;color:#2d2d2f;font-size:16px;line-height:1.5;direction:rtl;text-align:right;list-style-position:outside !important";
-    const LI = "padding:0 1em 0 0;margin:0;margin-right:0.5em";
-
-    const tipsHtml = d.tips.map(tip => `<li style="${LI}"><span>${tip}</span></li>`).join('\n');
-    const othersHtml = d.others.map(o => `<p style="${P}">${o}</p>`).join('\n');
+    const tipsHtml = r.tips.map(tip => `<li style="${LI}"><span>${tip}</span></li>`).join('\n');
+    const steps = `${C.steps[0]} ${C.steps[1]} ${C.steps[2]}`;
+    const series = consent
+      ? `<p style="${P}">ובכל מקרה, גם אם עוד לא החלטת: בימים הקרובים אשלח לך עוד כמה מיילים קצרים, בערך אחד כל יומיים, עם תרגיל קטן בכל אחד, והראשון כבר בעוד יומיים.</p>\n`
+      : '';
+    const addr = SENDER_ADDRESS ? `<br><span style="white-space:nowrap">${escHtml(SENDER_ADDRESS).replace(' 16', '&nbsp;16')}</span>` : '';
 
     return `<!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>@media only screen { .email * { word-break: break-word; } }
-@media screen and (max-width: 384px) { .mail-message-content { width: 414px !important; } }</style>
+<style>@media only screen { .email * { word-break: break-word; } }</style>
 </head>
 <body style="margin:0;padding:0;-webkit-font-smoothing:antialiased;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%">
-<div class="email" style="margin-right:15px;margin-left:15px">
+<div style="display:none;max-height:0;max-width:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#FFFFFF;opacity:0;">הדפוס הבולט שלך: ${r.tag}&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;</div>
+<div class="email" dir="rtl" style="margin-right:15px;margin-left:15px;direction:rtl;text-align:right">
 <table cellpadding="0" cellspacing="0" style="border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;margin:0 auto"><tbody><tr><td style="vertical-align:top">
+<div style="text-align:center;margin:8px 0 6px;"><img src="https://liorochman.com/assets/logo-email.png" alt="ליאור רוכמן אימון מנטלי" width="88" height="64" style="display:inline-block;width:88px;height:64px;border:0;"></div>
 
-<p style="${P}">היי ${firstName},<br>​<br>מילאת את שאלון הבליינדספוט.<br>​<br>על בסיס התשובות שלך, הדפוס הדומיננטי שלך הוא <strong>${d.tag}.</strong><br>​<br><strong>המוטו שלך:</strong> ${d.motto}</p>
+<p style="${P}">היי${firstName ? ' ' + escHtml(firstName) : ''},<br>​<br>מילאת את שאלון הבליינדספוט. הדפוס הבולט שלך: <strong>${r.tag}</strong>.</p>
 
-<p style="${P}">${d.who}</p>
+<p style="${P}">${r.mirror}</p>
 
-<p style="${P}"><u><strong>${d.sectionTitle}</strong></u><br>​<br>${d.body1}</p>
+<p style="${P}"><strong>${r.noBlame}</strong></p>
 
-<p style="${P}">${d.body2}</p>
+<p style="${H}">השאלון מראה את הדפוס. שיחה מראה איפה בדיוק הוא קורה אצלך.</p>
 
-<p style="${P}"><u><strong>${d.tipsTitle}</strong></u></p>
+<p style="${P}">אם בא לך, אפשר לקבוע איתי ${C.name}: 45 דקות, בחינם, בזום, ואפשר גם בלי מצלמה. ${steps}</p>
+
+<p style="${P}">ובכנות: ${C.paid}</p>
+
+<table cellpadding="0" cellspacing="0" style="margin:20px auto 8px;border-collapse:separate"><tbody><tr><td align="center" bgcolor="#E2C374" style="border-radius:14px;background-color:#E2C374;text-align:center;mso-padding-alt:15px 34px">
+<a href="${BOOK_URL}" style="display:inline-block;padding:15px 34px;color:#1B2A4A;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;font-size:16px;font-weight:700;line-height:1.5;text-decoration:none;border-radius:14px">${C.button}</a>
+</td></tr></tbody></table>
+<p style="${SMALL}">${C.howto}</p>
+
+<p style="${H}">3 טיפים שלי ל${typeName}</p>
 <ul style="${UL}">
 ${tipsHtml}
 </ul>
 
-<p style="${P}"><u><strong>${d.weekTitle}</strong></u><br>​<br>${d.week}</p>
+<p style="${H}">ומה לעשות השבוע</p>
+<p style="${P};margin-top:0.4em">${r.week}</p>
+<p style="${P}">${r.weekMore}</p>
 
-<p style="${P}"><u><strong>אם אתה סקרן לגבי הדפוסים האחרים</strong></u></p>
+${series}<p style="${P}">ליאור</p>
 
-<p style="${P}">בקצרה, שלושת הדפוסים חולקים מכנה משותף אחד: <strong>ציפיות לא ריאליות.</strong></p>
-
-${othersHtml}
-
-<p style="${P}">-</p>
-
-<p style="${P}"><u><strong>הבנת מה הדפוס החוסם. מה השלב הבא? לייצר תשתית טובה להיכרות.</strong></u></p>
-
-<p style="${P}">${d.ctaCopy}</p>
-
-<p style="${P}">יותר פרטים בקישור כאן:</p>
-
-<table cellpadding="0" cellspacing="0" style="margin:20px auto;border-collapse:separate"><tbody><tr><td style="border-radius:14px;background-color:#e3b023;text-align:center">
-<a href="${COURSE_URL}" style="display:inline-block;padding:15px 34px;color:#1a1612;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;font-size:16px;font-weight:700;line-height:1.5;text-decoration:none;border-radius:14px">בוא נבנה פרופיל שמייצר התאמות איכותיות</a>
-</td></tr></tbody></table>
-
-<p style="${P}">ובכל מקרה, גם אם עוד לא החלטת-</p>
-
-<p style="${P}">${d.seriesCopy}</p>
-
-<p style="${P}">ליאור</p>
+<p style="${FOOT}">קיבלת את המייל הזה כי מילאת את שאלון הבליינדספוט וביקשת את התוצאה. ליאור רוכמן, אימון מנטלי לזוגיות, liorochman.com${addr}<br>לא רוצה לקבל ממני מיילים? אפשר לענות למייל הזה במילה "הסרה".</p>
 
 </td></tr></tbody></table>
 </div>
@@ -740,8 +890,8 @@ ${othersHtml}
       score_M:       state.scores.M,
       score_H:       state.scores.H,
       score_R:       state.scores.R,
-      email_subject: 'תוצאות השאלון - blindspots בדייטינג',
-      email_html:    buildEmailHtml(state.profile, state.userName, state.scores)
+      email_subject: 'הדפוס שלך בדייטים: התוצאה מהשאלון',
+      email_html:    buildEmailHtml(state.profile, state.userName, state.scores, true)
     };
     sendToZapier(leadPayload);
     sendToZapierFollowup(leadPayload);
