@@ -900,14 +900,13 @@ ${series}<p style="${P}">ליאור</p>
       method: 'POST',
       mode: 'no-cors',
       keepalive: true,
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        timestamp:    payload.timestamp,
-        name:         payload.name,
+      body: new URLSearchParams({
+        timestamp:    payload.timestamp || '',
+        name:         payload.name || '',
         first_name:   (payload.name || '').trim().split(' ')[0],
-        email:        payload.email,
-        profile:      payload.profile,
-        profile_name: payload.profile_name
+        email:        payload.email || '',
+        profile:      payload.profile || '',
+        profile_name: payload.profile_name || ''
       })
     }).catch(() => {});
   }
