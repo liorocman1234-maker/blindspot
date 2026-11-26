@@ -914,7 +914,8 @@ ${series}<p style="${P}">ליאור</p>
   }
 
   /* ═══ ACTIONS ═══ */
-  function startQuiz() { state.screen='quiz'; state.currentQ=0; render(); }
+  function startQuiz() { state.screen='quiz'; state.currentQ=0; render();
+    try { if (typeof fbq==='function') fbq('trackCustom','QuizStart'); } catch(e) {} }
 
   let _t=null;
   function selectOption(idx) {
@@ -926,7 +927,8 @@ ${series}<p style="${P}">ליאור</p>
 
   function nextQuestion() {
     if (state.answers[state.currentQ]===undefined) return;
-    if (state.currentQ < QUESTIONS.length-1) state.currentQ++;
+    if (state.currentQ < QUESTIONS.length-1) { state.currentQ++;
+      if (state.currentQ === Math.floor(QUESTIONS.length/2)) { try { if (typeof fbq==='function') fbq('trackCustom','QuizHalf'); } catch(e) {} } }
     else state.screen='lead';
     render();
   }
